@@ -1,6 +1,5 @@
-(ns clojure-codewars-client.core)
+(ns clojure-codewars-client.core
+  (:require [clj-http.client :as client]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn completed-katas [user]
+  (client/get (str "https://www.codewars.com/api/v1/users/" user "/code-challenges/completed?page=0") {:as :json}))
